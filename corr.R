@@ -17,7 +17,7 @@ corr <- function(directory, threshold = 0) {
                        col.names = c("Date","sulfate","nitrate","ID"),
                        colClasses = c("Date","numeric","numeric","integer"))
     nobs <- sum(complete.cases(file))
-    if (nobs<threshold) 
+    if (nobs<threshold | nobs==0) 
       next()
     cor <- cor(file$sulfate, file$nitrate, use = "complete.obs")
     result <- append(result, cor)
